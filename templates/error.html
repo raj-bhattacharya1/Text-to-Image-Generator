@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="error-container">
+        <h1 class = "error-title">An Error Occurred</h1>
+        <p class="error-message">{{ error }}</p>
+    </div>
+
+</body>
+</html>

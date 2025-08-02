@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Text2Image</title>
+                <!--Linking for icons-->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        </head>
+        <body>
+                <div class="container">
+                        <!-- Header -->
+                        <header class="header">
+                                <div class="logo-wrapper">
+                                        <div class="logo">
+                                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                        </div>
+                                        <h1>Text to Image Generator</h1>
+                                </div>
+
+                        </header>
+                        <div class="main-content">
+                                <form class="prompt-form" action="/generate" method="post">
+                                        <div class="prompt-container">
+                                                <textarea class="prompt-input" name="prompt" placeholder="What's on your mind?" required autofocus></textarea>
+                                                <button type="submit" class="prompt-button">
+                                                        <i class="fa-solid fa-paper-plane"></i>
+                                                </button>
+                                        </div>
+
+                                        <!-- Prompt Actions -->
+                                        <div class="prompt-actions">
+                                                <div class="select-wrapper">
+                                                        <select class="custom-select" name="model" required>
+                                                                <option value="" selected disabled>Select Model</option>
+                                                                {% for model in models %}
+                                                                    <option value="{{ model }}">{{ model }}</option>
+                                                                {% endfor %}
+                                                        </select>
+                                                </div>
+
+                                                <div class="select-wrapper">
+                                                        <select class="custom-select" name="image_count" required>
+                                                                <option value="" selected disabled>Image Count</option>
+                                                                <option value="1">1 Image</option>
+                                                                <option value="2">2 Images</option>
+                                                                <option value="3">3 Images</option>
+                                                                <option value="4">4 Images</option>
+                                                        </select>
+                                                </div>
+                                                <div class="select-wrapper">
+                                                    <select class="custom-select" name="aspect_ratio" required>
+                                                        <option value="" selected disabled>Aspect Ratio</option>
+                                                        {% for width, height, ratio in aspect_ratios %}
+                                                            <option value="{{ width }}x{{ height }}">{{ ratio }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                        </div>
+                                </form>
+                                <div class="gallery-grid">
+                                    {% for image in images %}
+                                        <div class="img-container">
+                                            <img src="data:image/png;base64,{{ image }}" alt="Generated Image">
+                                            <div class="img-overlay">
+                                                <a href="/download/{{ loop.index0 }}" class="download-btn">Download</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                </div>
+        </body>
+</html>

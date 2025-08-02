@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Images</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Generated Images</h1>
+    <div class="image-gallery">
+        {% for image in images %}
+            <div class="image-container">
+                <img src="data:image/png;base64,{{ image }}" alt="Generated Image">
+                <a href="/download/{{ loop.index0 }}" class="download-btn">Download</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

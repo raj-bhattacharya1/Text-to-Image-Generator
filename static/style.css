@@ -1,0 +1,219 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* --- Basic Resets and Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif; /* Use the cosmic font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #e0e0ff; /* Light cosmic blue text color */
+
+    /* Cosmic Background:
+     - The background is set to a placeholder galaxy image.
+     - 'background-size: cover' ensures the image covers the entire page.
+     - 'background-position: center' centers the image.
+     - 'background-attachment: fixed' keeps the background stationary when scrolling.
+     - IMPORTANT: Replace the placeholder URL with the path to your own image.
+    */
+
+    background-size: cover;
+    background:
+        url('/static/Images/Human.png'),
+        linear-gradient(#1b2735 0%, #090a0f 100%);
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* --- Main Content Box --- */
+.container {
+    width: 90%;
+    max-width: 850px;
+
+    /* Translucent Glass Effect:
+     - The background is a semi-transparent dark blue/purple.
+     - 'backdrop-filter: blur(8px)' creates the frosted glass effect, making the background image visible but blurred.
+     - This translucency applies ONLY to the container itself, not the elements inside it.
+    */
+    background: rgba(10, 5, 25, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+
+    border: 1px solid rgba(100, 80, 200, 0.5);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(80, 60, 180, 0.5); /* Nebula glow effect */
+    text-align: center;
+}
+
+/* --- Header Elements --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(100, 80, 200, 0.5);
+    padding-bottom: 1rem;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: #9f8aff;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* --- Prompt Form Elements --- */
+.prompt-form {
+    margin-bottom: 2rem;
+}
+
+.prompt-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.prompt-input {
+    flex-grow: 1;
+    padding: 1rem;
+    border: 1px solid rgba(100, 80, 200, 0.5);
+    border-radius: 10px;
+    background: rgba(10, 5, 25, 0.8);
+    color: #e0e0ff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
+
+.prompt-button {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    color: #9f8aff;
+    transition: color 0.3s;
+}
+
+.prompt-button:hover {
+    color: #c0b0ff;
+}
+
+/* --- Selection Dropdowns --- */
+.prompt-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.select-wrapper {
+    flex-grow: 1;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(100, 80, 200, 0.5);
+    border-radius: 10px;
+    background: rgba(10, 5, 25, 0.8);
+    color: #e0e0ff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%239f8aff%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+/* --- Image Gallery --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.img-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(100, 80, 200, 0.5);
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.img-container:hover .img-overlay {
+    opacity: 1;
+}
+
+.download-btn {
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    background-color: #9f8aff;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #8a70ff;
+}
+
+/* Error Message */
+
+
+.error-container {
+
+    width: 90%;
+    max-width: 850px;
+    box-sizing: border-box;
+    position: absolute;
+    border: 1px solid rgba(100, 80, 200, 0.5);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(80, 60, 180, 0.5); /* Nebula glow effect */
+    text-align: center;
+    background: rgba(10, 5, 25, 0.6);
+}
+
+.error-message {
+    color: red;
+}
